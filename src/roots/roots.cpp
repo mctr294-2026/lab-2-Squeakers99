@@ -28,7 +28,27 @@ double* rootCalculation(double a, double b, double c, double x1, double x2) {
         return nullptr;
     }
 
-    return new double(1.2);
+    double x0 = (x1 + x2) / 2.0; // Initial guess at the midpoint
+
+    double f_x0 = functionCalculation(a, b, c, x0);
+    double f_prime_x0 = derivativeCalculation(a, b, x0);
+
+    // Newton-Raphson iteration
+    for (int i = 0; i < maxIterations; i++) {
+        f_x0 = functionCalculation(a, b, c, x0);
+        f_prime_x0 = derivativeCalculation(a, b, x0);
+
+        double x_next = x0 - f_x0 / f_prime_x0;
+
+        // Check for convergence
+        if (std::abs(x_next - x0) < tolerance) {
+            return new double(x_next);
+        }
+
+        x0 = x_next;
+    }
+
+    return new double(x0); // Return the best estimate after max iterations
 }
 
 double criticalPointCalculation(double a, double b) {
