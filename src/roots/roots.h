@@ -1,8 +1,5 @@
 #pragma once
 
-#define x1
-#define x2
-#define x3
 #define tolerance 1e-6
 #define maxIterations 1e6
 #define currentIteration 0
