@@ -89,26 +89,29 @@ bool newton_raphson(std::function<double(double)> f,
     int iterations = 0;
 
     // Iteratively refines the guess c until the root is found within tolerance or max iterations reached
-    while(std::abs(f(c)) > tolerance && iterations < max_iterations) {
+    while(iterations < max_iterations) {
+        // Creates a variable to store the derivative at c
         double g_c = g(c);
-        if (g_c == 0) {
-            return false; // Derivative is zero, cannot proceed
-        }
-        c = c - f(c) / g_c;
 
-        // Check if c is still within [a, b]
-        if (c < a || c > b) {
-            return false; // Out of bounds
+        // Prevents division by zero
+        if (g_c == 0) {
+            return false;
+        }
+
+        // Gets the new c value using the Newton-Raphson formula
+        double c_new = c - f(c) / g_c;
+
+        // Checks if the change between c and c_new is within tolerance
+        if (std::abs(c - c_new) < tolerance) {
+            *root = c_new;
+            return true;
+        } else{
+            c = c_new;
         }
 
         iterations++;
     }
 
-    // If the root is found within tolerance, assigns it to the output parameter and returns true
-    if (std::abs(f(c)) < tolerance) {
-        *root = c;
-        return true;
-    } else {
-        return false;
-    }
+    // If the root is not found within max iterations, returns false
+    return false;
 }
