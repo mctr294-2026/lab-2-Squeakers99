@@ -46,7 +46,7 @@ int main(int argc, char **argv)
     {
         std::cout << "Bisection: failed" << std::endl;
     }
-    /*
+    
     if (regula_falsi(poly1, -200.0, 300.0, &root))
     {
         std::cout << "Regula Falsi: root = " << root << ", poly1(root) = " << poly1(root) << std::endl;
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
     else
     {
         std::cout << "Secant: failed" << std::endl;
-    }*/
+    }
 
     std::cout << std::endl;
 
@@ -87,7 +87,7 @@ int main(int argc, char **argv)
     {
         std::cout << "Bisection: failed" << std::endl;
     }
-    /*
+    
     if (regula_falsi(poly2, -1.0, 1.0, &root))
     {
         std::cout << "Regula Falsi: root = " << root << ", poly2(root) = " << poly2(root) << std::endl;
@@ -113,7 +113,7 @@ int main(int argc, char **argv)
     else
     {
         std::cout << "Secant: failed" << std::endl;
-    }*/
+    }
 
     return 0;
 }
