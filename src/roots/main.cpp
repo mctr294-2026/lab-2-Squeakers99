@@ -2,6 +2,7 @@
 #include <iomanip>
 
 #include "roots.hpp"
+#include "roots.cpp"
 
 double poly1(double x)
 {
